@@ -19,21 +19,34 @@ export default function Maingame() {
   const [gameStart, setGameStart] = useState(true);
   const [isWin, setIsWin] = useState({});
   const [board, setBoard] = useState(game.generateBoard());
-  console.log('board: ', board);
   const [moves, setMoves] = useState([]);
   const [winPosition, setWinPosition] = useState([]);
   const [choise, setChoise] = useState(false);
 
   
-
   useEffect(() => {
     setPlayerStart(game.startPosition());
     game.calculate(setMoves, setChoise);
     setWinPosition(game.player.getPosition());
   }, []);
 
-  function checkWin() {
-    
+  function checkWin(num) {
+    if (choise) {
+      const win = boardController.getNum(winPosition);
+      if (num === win) {
+        setIsWin({
+          status: true,
+          right: win
+        });
+      } else {
+        setIsWin({
+          status: false,
+          right: win,
+          wrong: num
+        });
+      }
+      setGameStart(false);
+    }
   }
 
   function restart() {
