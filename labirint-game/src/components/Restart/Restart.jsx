@@ -1,7 +1,12 @@
 import React from 'react'
+import './style.css'
 
-export default function Restart() {
+export default function Restart({restart}) {
   return (
-    <div>Restart</div>
+    <div className="empty">
+      <button onClick={restart} className="button">
+        RESTART
+      </button>
+    </div>
   )
 }

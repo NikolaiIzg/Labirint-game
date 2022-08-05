@@ -50,7 +50,15 @@ export default function Maingame() {
   }
 
   function restart() {
-   
+    game.restart(setMoves, setPlayerStart, setChoise);
+    setBoard((prev) => [...prev]);
+    setWinPosition(game.player.getPosition())
+    setGameStart(true)
+    setIsWin({
+      right: null,
+      status: null,
+      wrong: null,
+    })
   }
 
   return (
