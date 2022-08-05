@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import Board from '../../game/board';
 import Game from '../../game/game';
 import Player from '../../game/player';
+import BackToStart from '../BackToStart/BackToStart';
 import Box from '../Box/Box';
 import Moves from '../Moves/Moves';
 import Restart from '../Restart/Restart';
@@ -63,6 +64,7 @@ export default function Maingame() {
 
   return (
     <>
+     
      {!gameStart && <Restart restart={restart} />}
       {board.map((el, i) => (
         <Row key={i + 10} >
@@ -81,6 +83,7 @@ export default function Maingame() {
         </Row>
       ))}
       <Moves moves={moves} />
+      <BackToStart />
     </>
   )
 }
