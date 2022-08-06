@@ -1,1 +1,3 @@
-# Libirint-game
+# Labirint-game
+
+### Привет, друг :sunglasses:
