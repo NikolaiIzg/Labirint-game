@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "cd client && npm i && npm run build",
-    "start": "client && npm start"
+    "build": "cd labirint-game && npm i && npm run build",
+    "start": "cd labirint-game && npm start"
   },
   "repository": {
     "type": "git",
