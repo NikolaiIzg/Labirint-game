@@ -1,13 +1,13 @@
 import React from 'react'
-import './style.css'
+import style from './style.module.css'
 import Direction from '../ Direction/Direction';
 
 
-export default function Moves({moves}) {
+export default function Moves({ moves }) {
+  
 
-  console.log(moves);
   return (
-    <div className="moves">
+    <div className={style.moves}>
       {moves.map((el, i) => (
         <Direction key={el + i} arrow={el} />
       ))}

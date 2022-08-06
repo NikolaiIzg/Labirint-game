@@ -1,5 +1,5 @@
 import React from 'react'
-import './style.css'
+import style from'./style.module.css'
 import { Link } from 'react-router-dom'
 
 export default function StartePage() {
@@ -7,7 +7,8 @@ export default function StartePage() {
   return (
     <>
     <div>
-      <h1>Правила игры</h1>
+      <h1>Добро пожаловать в "Лабиринт"</h1>
+      <h2>Правила игры</h2>
       <p>
         Для победы нужно указать правильный ответ. 
         < br />
@@ -21,8 +22,8 @@ export default function StartePage() {
         Удачи, у тебя всё получится 😘
       </p>
     </div>
-    <div className='startGame'>
-      <Link className='buttonGame' to="/game">В игру</Link>
+    <div className={style.startGame}>
+      <Link className={style.buttonGame} to="/game">В игру</Link>
     </div>
     </>
   )

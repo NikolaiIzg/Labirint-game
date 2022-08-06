@@ -40,6 +40,7 @@ export default class Game {
   restart(setArrows, setPlayerStart, setChoise) {
     this.player.newPosition();
     setPlayerStart(this.player.getPosition());
+    
     setArrows([]);
     this.calculate(setArrows, setChoise);
   }

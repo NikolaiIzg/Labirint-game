@@ -1,8 +1,8 @@
 import React from 'react'
-import './style.css';
+import style from'./style.module.css';
 
 export default function Row(props) {
   return (
-    <div className="row">{props.children}</div>
+    <div className={style.row}>{props.children}</div>
   )
 }

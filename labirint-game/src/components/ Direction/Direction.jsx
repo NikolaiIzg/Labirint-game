@@ -1,5 +1,5 @@
 import React from 'react'
-import './style.css'
+import style from './style.module.css'
 
 export default function Direction({arrow}) {
 
@@ -22,6 +22,6 @@ export default function Direction({arrow}) {
     }
 
   return (
-    <div className="arrow">{text}</div>
+    <div className={style.arrow}>{text}</div>
   )
 }

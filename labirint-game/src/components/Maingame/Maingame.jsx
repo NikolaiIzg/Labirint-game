@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux';
 import Board from '../../game/board';
 import Game from '../../game/game';
 import Player from '../../game/player';
@@ -16,9 +17,11 @@ export default function Maingame() {
   const player = new Player(SIZE);
   const game = new Game(player, boardController);
 
+  const dispatch = useDispatch()
+  const gameStart = useSelector((state) => state.gameStart)
+  const isWin = useSelector((state) => state.isWin)
+
   const [playerStart, setPlayerStart] = useState([0, 0]);
-  const [gameStart, setGameStart] = useState(true);
-  const [isWin, setIsWin] = useState({});
   const [board, setBoard] = useState(game.generateBoard());
   const [moves, setMoves] = useState([]);
   const [winPosition, setWinPosition] = useState([]);
@@ -35,36 +38,28 @@ export default function Maingame() {
     if (choise) {
       const win = boardController.getNum(winPosition);
       if (num === win) {
-        setIsWin({
-          status: true,
-          right: win
-        });
+        dispatch({type: 'SET_ISWIN', payload: {...isWin, status: true, right: win}})
       } else {
-        setIsWin({
-          status: false,
-          right: win,
-          wrong: num
-        });
+        dispatch({type: 'SET_ISWIN', payload: {...isWin, status: false, right: win, wrong: num}})
       }
-      setGameStart(false);
+      dispatch({type: 'SET_GAMESTART', payload: false})
     }
   }
 
   function restart() {
-    game.restart(setMoves, setPlayerStart, setChoise);
-    setBoard((prev) => [...prev]);
-    setWinPosition(game.player.getPosition())
-    setGameStart(true)
-    setIsWin({
-      right: null,
-      status: null,
-      wrong: null,
-    })
+    game.restart(
+      setMoves, 
+      setPlayerStart, 
+      setChoise
+      );
+      setBoard((prev) => [...prev]);
+      setWinPosition(game.player.getPosition())
+      dispatch({type: 'SET_GAMESTART', payload: true})
+      dispatch({type: 'SET_ISWIN', payload: {...isWin, status: null, right: null, wrong: null}})
   }
 
   return (
     <>
-     
      {!gameStart && <Restart restart={restart} />}
       {board.map((el, i) => (
         <Row key={i + 10} >

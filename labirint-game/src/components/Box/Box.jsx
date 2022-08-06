@@ -9,7 +9,8 @@ export default function Box({
                playerStart,
                row,
                col
-}) {
+})
+{
   return (
     <div
       className={`box ${gameStart && "restart start"} 
